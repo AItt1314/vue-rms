@@ -1,6 +1,6 @@
 <template>
     <div id='login'>
-        <div class="login_box">
+        <div class="login_box" @keyup.enter="login">
             <!-- 头像区域 -->
             <div class="avatar_box">
                 <img src="../assets/img/avatar.jpg" alt="" class="avatar">
@@ -12,7 +12,7 @@
             { required: true, message: '请输入活动名称', trigger: 'blur' },
             { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
           ], 3.将 Form-Item 的 prop 属性设置为需校验的字段名即可。 prop="region" -->
-            <el-form label-width="80px" class="login_form" :model='loginForm' :rules='loginFormRules' ref="loginFormRef">
+            <el-form label-width="80px" class="login_form" :model='loginForm' :rules='loginFormRules' ref="loginFormRef" >
                 <!-- 用户名 -->
                 <el-form-item label='用户名：' prop="username">
                     <el-input prefix-icon="el-icon-user-solid" v-model='loginForm.username' ></el-input>
@@ -25,6 +25,7 @@
                 </el-form-item>
                 <!-- 按钮区域 -->
                 <el-form-item class="login_btn">
+                    <!-- v-on 在监听键盘事件时，如果元素没有获取焦点，keyup事件无法生效,解决思路：把按键事件绑定到表单上 -->
                     <el-button type="primary" @click="login">登录</el-button>
                     <el-button type="info" @click="reset">重置</el-button>
                 </el-form-item>
@@ -71,7 +72,7 @@ export default {
         reset(){
             this.$refs.loginFormRef.resetFields()
         },
-        //点击登录按钮事务 1.对表单进行预验证 （1.获取到表单的实例对象 ，使用ref+this.$refs 2.对实例对象使用element—ui自带的validate方法） 2.根据预验证结果判断是否移交数据 3根据返回的结果的状态码来判断是否登陆成功
+        //点击登录按钮事务 1.对表单进行预验证,element-ui的validate （1.获取到表单的实例对象 ，使用ref+this.$refs 2.对实例对象使用element—ui自带的validate方法） 2.根据预验证结果判断是否移交数据 3根据返回的结果的状态码来判断是否登陆成功
         login(){
             this.$refs.loginFormRef.validate(async valid=>{
                 if(!valid) return;

@@ -17,7 +17,7 @@
           <!-- 折叠按钮 -->
           <div class="el-icon-s-operation toggle_btn" @click="toggle"></div>
           <!-- 大菜单 -->
-          <!-- 最多可打开一项，是否可折叠，折叠动画，是否开启路由模式（在子菜单el-menu-item中的index写出路径） -->
+          <!-- 最多可打开一项，是否可折叠，折叠动画，是否开启路由模式（在子菜单中用index指向路由） -->
         <el-menu
           class="el-menu-vertical-demo"
           background-color='#ecdef0'
@@ -27,6 +27,7 @@
           :collapse='collapse.isCollapse'
           :collapse-transition = false
           :router=true
+          :default-active = activePath
         >
         <!-- 一级菜单 -->
         <!-- 每一个一级菜单都应该有自己独一无二的index，否则点击按钮会导致所有菜单同步 -->
@@ -40,7 +41,8 @@
               <span>{{item.authName}}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item :index="'/'+subitem.path" v-for="subitem in item.children" :key='subitem.id'><template slot="title">
+            <el-menu-item :index="'/'+subitem.path" v-for="subitem in item.children" :key='subitem.id' @click="
+storagePath('/'+subitem.path)"><template slot="title">
                 <!-- 二级菜单图标 -->
               <i class="el-icon-menu"></i>
               <!-- 二级菜标题名 -->
@@ -76,7 +78,9 @@ export default {
         //是否折叠，及折叠后的侧边栏宽度
         collapse:{
             isCollapse: false,
-            }
+            },
+            // 当前链接地址
+        activePath:''
     };
   },
   methods: {
@@ -92,11 +96,16 @@ export default {
     },
     toggle(){
         this.collapse.isCollapse = !this.collapse.isCollapse
+    },
+    storagePath(activePath){
+      window.sessionStorage.setItem('activePath',activePath);
+      this.activePath = activePath;
     }
   },
 //   获取左侧所有菜单
   created () {
-      this.getMenuList()
+      this.getMenuList();
+      this.activePath = window.sessionStorage.getItem('activePath')
   }
 };
 </script>
