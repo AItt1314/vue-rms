@@ -17,6 +17,7 @@
           <!-- 折叠按钮 -->
           <div class="el-icon-s-operation toggle_btn" @click="toggle"></div>
           <!-- 大菜单 -->
+          <!-- 最多可打开一项，是否可折叠，折叠动画，是否开启路由模式（在子菜单el-menu-item中的index写出路径） -->
         <el-menu
           class="el-menu-vertical-demo"
           background-color='#ecdef0'
