@@ -1,5 +1,5 @@
 <template>
-  <div id="user" @keyup.enter="getUsersList">
+  <div id="user" @keyup.enter="getUsersList" class="page">
     <!-- 头部面包屑区域 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
@@ -371,19 +371,6 @@ export default {
 
 
 <style scoped>
-/* 上下两栏布局的方式，1.给父容器设置弹性盒子布局，并更改主轴方向为纵向，2.然后固定一个盒子的高度，对另一个盒子使用flex：1 */
-#user {
-  height: 100% !important;
-  display: flex;
-  flex-direction: column;
-}
-.el-card {
-  flex: 1;
-}
-.el-breadcrumb {
-  font-size: 18px !important;
-  margin-bottom: 30px !important;
-}
 .userlistTable {
   height: 100%;
   margin-top: 30px;

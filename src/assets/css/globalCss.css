@@ -11,3 +11,21 @@ body,
     padding: 0;
     box-sizing: border-box;
 }
+
+
+/* 上下两栏布局的方式，1.给父容器设置弹性盒子布局，并更改主轴方向为纵向，2.然后固定一个盒子的高度，对另一个盒子使用flex：1 */
+
+.page {
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.el-card {
+    flex: 1;
+}
+
+.el-breadcrumb {
+    font-size: 18px !important;
+    margin-bottom: 30px !important;
+}
