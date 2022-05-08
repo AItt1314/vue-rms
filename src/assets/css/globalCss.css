@@ -4,6 +4,7 @@ html,
 body,
 #app {
     height: 100%;
+    min-width: 1366px;
 }
 
 * {
@@ -28,4 +29,17 @@ body,
 .el-breadcrumb {
     font-size: 18px !important;
     margin-bottom: 30px !important;
+}
+
+.listTable {
+    height: 100%;
+    margin-top: 30px;
+}
+
+.btnList {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
