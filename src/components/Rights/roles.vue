@@ -12,7 +12,7 @@
       <el-row>
         <el-col
           ><el-button type="primary" @click="AddDialogVisible = true"
-            >添加用户</el-button
+            >添加角色</el-button
           ></el-col
         >
       </el-row>
@@ -135,7 +135,7 @@
                 </el-tooltip>
                 <el-tooltip
                   effect="light"
-                  content="删除用户"
+                  content="删除角色"
                   placement="top"
                   :enterable="false"
                 >
@@ -153,7 +153,7 @@
       </el-row>
     </el-card>
     <!-- 添加按钮弹出的会话框 -->
-    <el-dialog title="添加用户" :visible.sync="AddDialogVisible" width="40%">
+    <el-dialog title="添加角色" :visible.sync="AddDialogVisible" width="40%">
       <span>
         <!-- 添加用户的表单 -->
         <el-form
@@ -176,7 +176,7 @@
       </span>
     </el-dialog>
     <!-- 点击编辑按钮弹出的会话框 -->
-    <el-dialog title="添加用户" :visible.sync="editDialogVisible" width="40%">
+    <el-dialog title="编辑用户" :visible.sync="editDialogVisible" width="40%">
       <span>
         <!-- 编辑用户的表单 -->
         <el-form
