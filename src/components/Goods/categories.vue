@@ -98,7 +98,7 @@
   title="编辑分类" :visible.sync="editDialogVisible"
   >
   <span>
-    <el-form :model="editCateRequestParameters" ref="editFormRef" label-width = auto :rules="addRules" >
+    <el-form :model="editCateRequestParameters" ref="editFormRef" label-width=auto :rules="addRules" >
   <el-form-item label="分类名称:" prop="cat_name" >
     <el-input v-model="editCateRequestParameters.cat_name"></el-input>
   </el-form-item>
